@@ -15,7 +15,7 @@ class Data extends AbstractHelper
     /**
      * @var CollectionFactory
      */
-    protected $_reportCollectionFactory;
+    protected $reportCollectionFactory;
 
     /**
      * Data constructor.
@@ -27,21 +27,24 @@ class Data extends AbstractHelper
         Context $context,
         CollectionFactory  $reportCollectionFactory
     ) {
-        $this->_reportCollectionFactory = $reportCollectionFactory;
+        $this->reportCollectionFactory = $reportCollectionFactory;
         parent::__construct($context);
     }
 
     /**
-     * @param null $producID
+     * Get the count of Current Products Sold
+     *
+     * @param null $productId
      * @return int
      */
-    public function getSoldQtyByProductId($producID=null) {
-        $SoldProducts = $this->_reportCollectionFactory->create();
-        $SoldProductCount = $SoldProducts->addOrderedQty()->addAttributeToFilter('product_id', $producID);
-        if(!$SoldProductCount->count()) {
+    public function getSoldQtyByProductId($productId = null)
+    {
+        $SoldProducts = $this->reportCollectionFactory->create();
+        $SoldProductsCount = $SoldProducts->addOrderedQty()->addAttributeToFilter('product_id', $productId);
+        if(!$SoldProductsCount->count()) {
             return 0;
         }
-        $product = $SoldProductCount->getFirstItem();
+        $product = $SoldProductsCount->getFirstItem();
         return (int)$product->getData('ordered_qty');
     }
 }

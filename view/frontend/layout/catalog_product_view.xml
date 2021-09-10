@@ -5,7 +5,7 @@
     </head>
     <body>
         <referenceContainer name="product.info.stock.sku">
-            <block class="Magento\Catalog\Block\Product\View" name="chk_productsoldcount" template="CHK_ProductSoldCount::product/product_sold_count.phtml" after="-"/>
+            <block class="Magento\Catalog\Block\Product\View" name="chk_productsoldcount" template="CHK_ProductSoldCount::product/product_sold_count.phtml" after="-" cacheable="false"/>
         </referenceContainer>
     </body>
 </page>
