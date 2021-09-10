@@ -1,0 +1,5 @@
+<?php
+$_helper = $this->_helper = $this->helper('CHK\ProductSoldCount\Helper\Data');
+$soldCount = $_helper->getSoldQtyByProductId($this->getProduct()->getId());
+?>
+<div class="product attribute product_count"><strong>Products Sold:</strong> <?= $soldCount ?></div>
